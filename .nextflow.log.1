@@ -1,0 +1,139 @@
+ott-30 16:24:49.149 [main] DEBUG nextflow.cli.Launcher - $> nextflow run main.nf --help
+ott-30 16:24:49.372 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.04.4
+ott-30 16:24:49.871 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/home/patrick/.nextflow/plugins; core-plugins: nf-amazon@2.5.3,nf-azure@1.6.1,nf-cloudcache@0.4.1,nf-codecommit@0.2.1,nf-console@1.1.3,nf-ga4gh@1.3.0,nf-google@1.13.2-patch1,nf-tower@1.9.1,nf-wave@1.4.2-patch1
+ott-30 16:24:50.123 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+ott-30 16:24:50.124 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+ott-30 16:24:50.127 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+ott-30 16:24:50.164 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+ott-30 16:24:50.295 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/nextflow.config
+ott-30 16:24:50.358 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/nextflow.config
+ott-30 16:24:50.773 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /home/patrick/.nextflow/secrets/store.json
+ott-30 16:24:50.776 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@267bbe1a] - activable => nextflow.secret.LocalSecretsProvider@267bbe1a
+ott-30 16:24:50.789 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+ott-30 16:24:53.722 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 from script declaration
+ott-30 16:24:56.118 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [lonely_lichterman] DSL2 - revision: cd39008b74
+ott-30 16:24:56.120 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+ott-30 16:24:56.120 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+ott-30 16:24:57.219 [main] DEBUG nextflow.Session - Session UUID: 18847244-d637-4011-926c-2dbf31c84fc8
+ott-30 16:24:57.220 [main] DEBUG nextflow.Session - Run name: lonely_lichterman
+ott-30 16:24:57.220 [main] DEBUG nextflow.Session - Executor pool size: 16
+ott-30 16:24:57.273 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+ott-30 16:24:57.279 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=48; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+ott-30 16:24:57.304 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.04.4 build 5917
+  Created: 01-08-2024 07:05 UTC (09:05 CEST)
+  System: Linux 5.15.0-139-generic
+  Runtime: Groovy 4.0.21 on OpenJDK 64-Bit Server VM 11.0.27+6-post-Ubuntu-0ubuntu120.04
+  Encoding: UTF-8 (UTF-8)
+  Process: 86156@3Pi [127.0.1.1]
+  CPUs: 16 - Mem: 94.2 GB (713.4 MB) - Swap: 2 GB (2 GB)
+ott-30 16:24:57.332 [main] DEBUG nextflow.Session - Work-dir: /home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/work [ext2/ext3]
+ott-30 16:24:57.368 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+ott-30 16:24:57.380 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+ott-30 16:24:57.433 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+ott-30 16:24:57.660 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 17; maxThreads: 1000
+ott-30 16:24:58.628 [main] DEBUG nextflow.Session - Session start
+ott-30 16:24:58.632 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/output/execution/trace.txt
+ott-30 16:24:58.639 [main] DEBUG nextflow.Session - Using default localLib path: /home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/lib
+ott-30 16:24:58.643 [main] DEBUG nextflow.Session - Adding to the classpath library: /home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/lib
+ott-30 16:25:00.284 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+ott-30 16:25:00.284 [main] DEBUG nextflow.Session - Session aborted -- Cause: BUG! exception in phase 'semantic analysis' in source unit 'Script_c99207b5b5d5ea82' The lookup for WorkflowMain caused a failed compilation. There should not have been any compilation from this call.
+ott-30 16:25:00.296 [main] ERROR nextflow.cli.Launcher - @unknown
+org.codehaus.groovy.GroovyBugError: BUG! exception in phase 'semantic analysis' in source unit 'Script_c99207b5b5d5ea82' The lookup for WorkflowMain caused a failed compilation. There should not have been any compilation from this call.
+	at org.codehaus.groovy.control.ClassNodeResolver.findByClassLoading(ClassNodeResolver.java:218)
+	at org.codehaus.groovy.control.ClassNodeResolver.tryAsLoaderClassOrScript(ClassNodeResolver.java:200)
+	at org.codehaus.groovy.control.ClassNodeResolver.findClassNode(ClassNodeResolver.java:175)
+	at org.codehaus.groovy.control.ClassNodeResolver.resolveName(ClassNodeResolver.java:129)
+	at org.codehaus.groovy.control.ResolveVisitor.resolveToOuter(ResolveVisitor.java:769)
+	at org.codehaus.groovy.control.ResolveVisitor.resolve(ResolveVisitor.java:410)
+	at org.codehaus.groovy.control.ResolveVisitor.resolve(ResolveVisitor.java:371)
+	at org.codehaus.groovy.control.ResolveVisitor.transformVariableExpression(ResolveVisitor.java:1011)
+	at org.codehaus.groovy.control.ResolveVisitor.transform(ResolveVisitor.java:788)
+	at org.codehaus.groovy.control.ResolveVisitor.transformMethodCallExpression(ResolveVisitor.java:1136)
+	at org.codehaus.groovy.control.ResolveVisitor.transform(ResolveVisitor.java:796)
+	at org.codehaus.groovy.ast.ClassCodeExpressionTransformer.visitExpressionStatement(ClassCodeExpressionTransformer.java:129)
+	at org.codehaus.groovy.ast.stmt.ExpressionStatement.visit(ExpressionStatement.java:41)
+	at org.codehaus.groovy.ast.CodeVisitorSupport.visitBlockStatement(CodeVisitorSupport.java:86)
+	at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitBlockStatement(ClassCodeVisitorSupport.java:168)
+	at org.codehaus.groovy.control.ResolveVisitor.visitBlockStatement(ResolveVisitor.java:1373)
+	at org.codehaus.groovy.ast.stmt.BlockStatement.visit(BlockStatement.java:72)
+	at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitClassCodeContainer(ClassCodeVisitorSupport.java:142)
+	at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitConstructorOrMethod(ClassCodeVisitorSupport.java:115)
+	at org.codehaus.groovy.ast.ClassCodeExpressionTransformer.visitConstructorOrMethod(ClassCodeExpressionTransformer.java:87)
+	at org.codehaus.groovy.control.ResolveVisitor.visitConstructorOrMethod(ResolveVisitor.java:292)
+	at org.codehaus.groovy.ast.ClassCodeVisitorSupport.visitMethod(ClassCodeVisitorSupport.java:110)
+	at org.codehaus.groovy.ast.ClassNode.visitMethods(ClassNode.java:1132)
+	at org.codehaus.groovy.ast.ClassNode.visitContents(ClassNode.java:1125)
+	at org.codehaus.groovy.control.ResolveVisitor.visitClass(ResolveVisitor.java:1302)
+	at org.codehaus.groovy.control.ResolveVisitor.startResolving(ResolveVisitor.java:258)
+	at org.codehaus.groovy.control.CompilationUnit.lambda$addPhaseOperations$4(CompilationUnit.java:218)
+	at org.codehaus.groovy.control.CompilationUnit$ISourceUnitOperation.doPhaseOperation(CompilationUnit.java:897)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:692)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:666)
+	at groovy.lang.GroovyClassLoader.doParseClass(GroovyClassLoader.java:373)
+	at groovy.lang.GroovyClassLoader.lambda$parseClass$2(GroovyClassLoader.java:316)
+	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.compute(StampedCommonCache.java:163)
+	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.getAndPut(StampedCommonCache.java:154)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:314)
+	at groovy.lang.GroovyShell.parseClass(GroovyShell.java:572)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:585)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:639)
+	at groovy.lang.GroovyShell.parse(GroovyShell.java:643)
+	at nextflow.script.ScriptParser.parse0(ScriptParser.groovy:175)
+	at nextflow.script.ScriptParser.parse(ScriptParser.groovy:206)
+	at nextflow.script.ScriptRunner.parseScript(ScriptRunner.groovy:229)
+	at nextflow.script.ScriptRunner.execute(ScriptRunner.groovy:136)
+	at nextflow.cli.CmdRun.run(CmdRun.groovy:372)
+	at nextflow.cli.Launcher.run(Launcher.groovy:503)
+	at nextflow.cli.Launcher.main(Launcher.groovy:657)
+Caused by: org.codehaus.groovy.control.MultipleCompilationErrorsException: startup failed:
+file:/home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/lib/NfcoreSchema.groovy: 29: unable to resolve class org.everit.json.schema.Schema
+ @ line 29, column 1.
+   import org.everit.json.schema.Schema
+   ^
+
+file:/home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/lib/NfcoreSchema.groovy: 30: unable to resolve class org.everit.json.schema.loader.SchemaLoader
+ @ line 30, column 1.
+   import org.everit.json.schema.loader.SchemaLoader
+   ^
+
+file:/home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/lib/NfcoreSchema.groovy: 31: unable to resolve class org.everit.json.schema.ValidationException
+ @ line 31, column 1.
+   import org.everit.json.schema.ValidationException
+   ^
+
+file:/home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/lib/NfcoreSchema.groovy: 32: unable to resolve class org.json.JSONObject
+ @ line 32, column 1.
+   import org.json.JSONObject
+   ^
+
+file:/home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/lib/NfcoreSchema.groovy: 33: unable to resolve class org.json.JSONTokener
+ @ line 33, column 1.
+   import org.json.JSONTokener
+   ^
+
+file:/home/patrick/projects/Microbion/genomics/assembly/WFs_EPI2ME/wf-ubcg2/lib/NfcoreSchema.groovy: 34: unable to resolve class org.json.JSONArray
+ @ line 34, column 1.
+   import org.json.JSONArray
+   ^
+
+6 errors
+
+	at org.codehaus.groovy.control.ErrorCollector.failIfErrors(ErrorCollector.java:292)
+	at org.codehaus.groovy.control.CompilationUnit$ISourceUnitOperation.doPhaseOperation(CompilationUnit.java:910)
+	at org.codehaus.groovy.control.CompilationUnit.processPhaseOperations(CompilationUnit.java:692)
+	at org.codehaus.groovy.control.CompilationUnit.compile(CompilationUnit.java:666)
+	at groovy.lang.GroovyClassLoader.doParseClass(GroovyClassLoader.java:373)
+	at groovy.lang.GroovyClassLoader.lambda$parseClass$2(GroovyClassLoader.java:316)
+	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.compute(StampedCommonCache.java:163)
+	at org.codehaus.groovy.runtime.memoize.StampedCommonCache.getAndPut(StampedCommonCache.java:154)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:314)
+	at groovy.lang.GroovyClassLoader.parseClass(GroovyClassLoader.java:298)
+	at groovy.lang.GroovyClassLoader.recompile(GroovyClassLoader.java:947)
+	at groovy.lang.GroovyClassLoader.loadClass(GroovyClassLoader.java:903)
+	at groovy.lang.GroovyClassLoader.loadClass(GroovyClassLoader.java:973)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:581)
+	at groovy.lang.GroovyClassLoader.loadClass(GroovyClassLoader.java:862)
+	at groovy.lang.GroovyClassLoader.loadClass(GroovyClassLoader.java:736)
+	at org.codehaus.groovy.control.ClassNodeResolver.findByClassLoading(ClassNodeResolver.java:214)
+	... 45 common frames omitted
