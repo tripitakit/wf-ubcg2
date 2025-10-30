@@ -1,0 +1,168 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://raw.githubusercontent.com/microbion/wf-ubcg2/master/nextflow_schema.json",
+    "title": "microbion/wf-ubcg2",
+    "workflow_title": "UBCG2 Phylogenomics Workflow",
+    "description": "Extract universal bacterial core genes from genome assemblies and construct phylogenetic supermatrix",
+    "url": "https://github.com/microbion/wf-ubcg2",
+    "type": "object",
+    "definitions": {
+        "stage1_extraction": {
+            "title": "Stage 1: UCG Extraction",
+            "type": "object",
+            "fa_icon": "fas fa-dna",
+            "description": "Extract universal bacterial core genes from a genome assembly using UBCG2.",
+            "help_text": "This stage extracts universal bacterial core genes from a single genome assembly. Provide a FASTA file to run this stage. Skip this stage if you already have UCG files from previous runs.",
+            "properties": {
+                "fasta": {
+                    "type": "string",
+                    "format": "file-path",
+                    "title": "FASTA genome assembly",
+                    "description": "Path to a bacterial genome assembly file in FASTA format.",
+                    "help_text": "Provide a complete or draft bacterial genome assembly in FASTA format (.fasta, .fna, .fa). The workflow will extract universal bacterial core genes using UBCG2. Leave empty to skip Stage 1."
+                }
+            }
+        },
+        "stage2_alignment": {
+            "title": "Stage 2: Alignment & Concatenation",
+            "type": "object",
+            "fa_icon": "fas fa-align-left",
+            "description": "Align and concatenate UCG genes from multiple samples into a phylogenetic supermatrix.",
+            "help_text": "This stage processes UCG files from multiple bacterial genomes, aligns corresponding genes using MAFFT, and concatenates them into a supermatrix suitable for phylogenetic analysis. Provide a directory containing *.ucg files to run this stage.",
+            "properties": {
+                "ucg_dir": {
+                    "type": "string",
+                    "format": "directory-path",
+                    "title": "UCG files directory",
+                    "description": "Path to directory containing UCG files (*.ucg) from multiple samples.",
+                    "help_text": "Provide a directory containing UCG JSON files. All *.ucg files in this directory will be processed. The workflow will align corresponding genes across samples and concatenate them into a supermatrix for phylogenetic analysis. Leave empty to skip Stage 2."
+                },
+                "mafft_threads": {
+                    "type": "integer",
+                    "default": 4,
+                    "minimum": 1,
+                    "maximum": 32,
+                    "title": "MAFFT threads",
+                    "description": "Number of threads to use for MAFFT alignment.",
+                    "help_text": "Specify the number of CPU threads to use for each MAFFT alignment job. More threads will speed up alignment but require more computational resources."
+                }
+            }
+        },
+        "output": {
+            "title": "Output Options",
+            "type": "object",
+            "fa_icon": "fas fa-arrow-left",
+            "description": "Parameters for saving and naming workflow outputs.",
+            "properties": {
+                "out_dir": {
+                    "type": "string",
+                    "default": "output",
+                    "format": "directory-path",
+                    "description": "Directory for output of all workflow results.",
+                    "help_text": "All workflow outputs will be saved in this directory. Stage 1 outputs will be in 'ucg_output/' subdirectory. Stage 2 outputs include alignment files and the final supermatrix."
+                }
+            }
+        },
+        "advanced_options": {
+            "title": "Advanced Options",
+            "type": "object",
+            "fa_icon": "far fa-question-circle",
+            "description": "Advanced options for configuring processes inside the workflow.",
+            "help_text": "These advanced options do not need to be changed for typical use, but allow fine tuning of workflows for users who want more control over the workflow.",
+            "properties": {
+                "client_fields": {
+                    "type": "string",
+                    "format": "file-path",
+                    "description": "A JSON file of key value pairs to display on the report.",
+                    "help_text": "This is used to populate a table of additional information (for example, about upstream components of an assay) to the workflow report.",
+                    "hidden": true
+                }
+            }
+        },
+        "misc": {
+            "title": "Miscellaneous Options",
+            "type": "object",
+            "description": "Everything else.",
+            "default": "",
+            "properties": {
+                "disable_ping": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enable to prevent sending a workflow ping.",
+                    "overrides": {
+                        "epi2mecloud": {
+                            "hidden": true
+                        }
+                    }
+                },
+                "help": {
+                    "type": "boolean",
+                    "description": "Display help text.",
+                    "fa_icon": "fas fa-question-circle",
+                    "default": false,
+                    "hidden": true
+                },
+                "version": {
+                    "type": "boolean",
+                    "description": "Display version and exit.",
+                    "fa_icon": "fas fa-question-circle",
+                    "default": false,
+                    "hidden": true
+                }
+            }
+        }
+    },
+    "allOf": [
+        {
+            "$ref": "#/definitions/stage1_extraction"
+        },
+        {
+            "$ref": "#/definitions/stage2_alignment"
+        },
+        {
+            "$ref": "#/definitions/output"
+        },
+        {
+            "$ref": "#/definitions/advanced_options"
+        },
+        {
+            "$ref": "#/definitions/misc"
+        }
+    ],
+    "properties": {
+        "aws_image_prefix": {
+            "type": "string",
+            "hidden": true
+        },
+        "aws_queue": {
+            "type": "string",
+            "hidden": true
+        },
+        "monochrome_logs": {
+            "type": "boolean"
+        },
+        "validate_params": {
+            "type": "boolean",
+            "default": true
+        },
+        "show_hidden_params": {
+            "type": "boolean"
+        }
+    },
+    "resources": {
+        "recommended": {
+            "cpus": 4,
+            "memory": "8GB"
+        },
+        "minimum": {
+            "cpus": 2,
+            "memory": "4GB"
+        },
+        "run_time": "Stage 1: 5-10 minutes per genome; Stage 2: 10-30 minutes depending on sample count",
+        "arm_support": true
+    },
+    "docs": {
+        "intro": "## Introduction\n\nThis workflow performs phylogenomic analysis of bacterial genomes using the UBCG2 (Universal Bacterial Core Gene) approach. It consists of two independent stages:\n\n**Stage 1: UCG Extraction** - Extracts universal bacterial core genes from individual genome assemblies.\n\n**Stage 2: Alignment & Concatenation** - Aligns and concatenates core genes from multiple samples to create a phylogenetic supermatrix.\n\nBoth stages can be run independently or together depending on your needs.",
+        "links": "## Useful links\n\n* [UBCG2 Publication](https://doi.org/10.7717/peerj.4089)\n* [MAFFT](https://mafft.cbrc.jp/alignment/software/)"
+    }
+}
